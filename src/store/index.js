@@ -34,5 +34,12 @@ export default createStore({
         commit('setLoading', false)
        
       }
+    },
+
+    // son parecidas a computed
+    getters: {
+      squareCounter(state){
+        return state.counter * state.counter;
+      }
     }
 })

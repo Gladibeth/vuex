@@ -16,7 +16,11 @@
     <h1>mapState obj</h1>
     <h2>{{ counter  }} - {{ lastMutation }}</h2>
 
-    <h2><strong>Nuevo valor {{ newVal }}</strong></h2>
+    <h2><strong>New value {{ newVal }}</strong></h2>
+
+
+    <strong>Direct getters {{ $store.getters.squareCounter }}</strong>
+
   </div>
 </template>
 
