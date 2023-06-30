@@ -5,7 +5,7 @@ export default createStore({
     state: {
       counter: 1,
       lastMutation: 'none',
-      loading: false,
+      isLoading: false,
       newVal: null,
     },
     // mutaciones son SINCRONAS
@@ -19,13 +19,20 @@ export default createStore({
         state.lastMutation = 'incrementBy';
         state.newVal = val;
       },
+      setLoading( state,val ){
+        state.isLoading = val;
+        state.lastMutation = 'setLoading';
+      }
 
     },
     // Puedes ser ASINCRONA
     actions:{
-      async incrementRandomInt(context){
+      async incrementRandomInt({commit}){
+        commit('setLoading', true)
         const randomInt = await getRandomInt()
-        context.commit('incrementBy', randomInt)
+        commit('incrementBy', randomInt)
+        commit('setLoading', false)
+       
       }
     }
 })

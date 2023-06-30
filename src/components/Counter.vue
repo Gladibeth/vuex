@@ -6,7 +6,7 @@
 
     <button @click="increment">1+</button>
     <button @click="incrementBy">5+</button>
-    <button @click="randomInt">Random</button>
+    <button @click="randomInt" :disabled="isLoading">Random</button>
 
     
 
@@ -28,7 +28,7 @@ import { mapState, mapActions } from 'vuex'
       counterComputed(){
         return this.$store.state.counter
       },
-      ...mapState(['counter', 'newVal']),
+      ...mapState(['counter', 'newVal', 'isLoading']),
       ...mapState({
         count: state => state.counter,
         lastMutation: state => state.lastMutation
