@@ -19,7 +19,7 @@
     <h2><strong>New value {{ newVal }}</strong></h2>
 
 
-    <strong>Direct getters {{ $store.getters.squareCounter }}</strong>
+    <strong>Direct getters {{ $store.getters['counter/squareCounter'] }}</strong>
 
   </div>
 </template>
