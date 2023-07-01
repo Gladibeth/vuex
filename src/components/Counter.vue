@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Accedo directo: {{  $store.state.counter  }}</h1>
+    <h1>Accedo directo: {{  $store.state.counter.counter  }}</h1>
     <h2>Counter computed {{ counterComputed }}</h2>
 
 
@@ -30,20 +30,21 @@ import { mapState, mapActions } from 'vuex'
     name: 'CounterComponent',
     computed:{
       counterComputed(){
-        return this.$store.state.counter
+        return this.$store.state.counter.counter
       },
-      ...mapState(['counter', 'newVal', 'isLoading']),
+      // primer argumento el modulo y el segundo todo lo que se deba mapear
+      ...mapState('counter',['counter', 'newVal', 'isLoading']),
       ...mapState({
-        count: state => state.counter,
-        lastMutation: state => state.lastMutation
+        count: state => state.counter.counter,
+        lastMutation: state => state.counter.lastMutation
       })
     },
     methods:{
       increment(){
-        this.$store.commit('increment');
+        this.$store.commit('counter/increment');
       },
       incrementBy(){
-        this.$store.commit('incrementBy', 5);
+        this.$store.commit('counter/incrementBy', 5);
       },
       // esta es una opcion, pero un poco larga
       /* incrementRandom(){
@@ -51,8 +52,8 @@ import { mapState, mapActions } from 'vuex'
       } */
 
       // Otra opcion y la las factible
-      //...mapActions(['incrementRandomInt'])
-      ...mapActions({
+      //...mapActions('counter',['incrementRandomInt'])
+      ...mapActions('counter',{
         randomInt: 'incrementRandomInt',
       })
     }
