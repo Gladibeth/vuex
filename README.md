@@ -1,4 +1,4 @@
-# 06-bases-vuex
+# Vuex
 
 ## Project setup
 ```
